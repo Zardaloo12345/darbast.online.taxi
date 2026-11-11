@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دربست 🚕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ هدر ============ -->
+  <header class="header">
+    <h1>🚕 دربست</h1>
+    <div class="header-actions">
+      <span id="userBadge" class="tag hidden"></span>
+      <button class="icon-btn" onclick="toggleTheme()" title="تم">🌙</button>
+      <button class="icon-btn hidden" id="logoutBtn" onclick="logout()" title="خروج">🚪</button>
+    </div>
+  </header>
+
+  <!-- ============ صفحه ورود/ثبت‌نام ============ -->
+  <main id="authView" class="view">
+    <div class="card">
+      <div class="role-picker">
+        <button class="role-btn active" data-role="passenger" onclick="pickRole('passenger')">
+          🧍 مسافر
+        </button>
+        <button class="role-btn" data-role="driver" onclick="pickRole('driver')">
+          🚗 راننده
+        </button>
+      </div>
+
+      <div class="tabs">
+        <button id="tabLogin" class="active" onclick="switchAuthMode('login')">ورود</button>
+        <button id="tabSignup" onclick="switchAuthMode('signup')">ثبت‌نام</button>
+      </div>
+
+      <form id="authForm">
+        <label id="nameLabel" class="hidden">نام
+          <input type="text" id="name">
+        </label>
+        <label>شماره تماس
+          <input type="tel" id="phone" placeholder="0912xxxxxxx" required>
+        </label>
+        <label>رمز عبور
+          <input type="password" id="password" required minlength="4">
+        </label>
+        <button type="submit" class="btn" id="submitBtn">ورود</button>
+      </form>
+      <div class="error" id="authError"></div>
+    </div>
+  </main>
+
+  <!-- ============ پنل مسافر ============ -->
+  <main id="passengerView" class="view hidden">
+    <form id="orderForm" class="card">
+      <h2>سفارش سفر</h2>
+      <label>مبدأ
+        <input type="text" id="origin" placeholder="میدان انقلاب" required>
+      </label>
+      <label>مقصد
+        <input type="text" id="destination" placeholder="فرودگاه مهرآباد" required>
+      </label>
+      <button type="submit" class="btn">درخواست تاکسی</button>
+    </form>
+
+    <div class="card">
+      <h2>سفارش‌های من</h2>
+      <div id="passengerOrders"></div>
+    </div>
+  </main>
+
+  <!-- ============ پنل راننده ============ -->
+  <main id="driverView" class="view hidden">
+    <div class="card">
+      <label class="switch">
+        <input type="checkbox" id="onlineToggle">
+        <span>من آنلاین هستم</span>
+      </label>
+    </div>
+    <div class="card">
+      <h2>سفارش‌های موجود</h2>
+      <div id="availableOrders"></div>
+    </div>
+    <div class="card">
+      <h2>سفر فعلی من</h2>
+      <div id="currentTrip" class="muted-text">سفارشی قبول نکرده‌اید</div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

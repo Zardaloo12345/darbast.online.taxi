@@ -1,0 +1,150 @@
+:root {
+  --taxi: #FFC107;
+  --taxi-dark: #E0A800;
+  --bg: #F5F5F5;
+  --card: #FFFFFF;
+  --text: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: #E0E0E0;
+  --success: #2E7D32;
+  --danger: #C62828;
+}
+[data-theme="dark"] {
+  --bg: #121212;
+  --card: #1E1E1E;
+  --text: #F5F5F5;
+  --muted: #9E9E9E;
+  --border: #2C2C2C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background .3s, color .3s;
+}
+
+.hidden { display: none !important; }
+.muted-text { color: var(--muted); font-size: 14px; }
+
+/* هدر */
+.header {
+  background: var(--taxi);
+  color: #1A1A1A;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  position: sticky; top: 0; z-index: 10;
+}
+.header h1 { font-size: 20px; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.tag {
+  background: #1A1A1A; color: var(--taxi);
+  padding: 4px 12px; border-radius: 20px; font-size: 12px;
+}
+.tag.driver { background: var(--success); color: white; }
+.icon-btn {
+  background: rgba(0,0,0,.15);
+  border: none; color: #1A1A1A;
+  width: 36px; height: 36px; border-radius: 50%;
+  cursor: pointer; font-size: 16px;
+}
+.icon-btn:hover { background: rgba(0,0,0,.25); }
+
+/* ویوها */
+.view { padding: 20px; max-width: 500px; margin: 0 auto; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+.card h2 { font-size: 17px; margin-bottom: 14px; }
+
+label {
+  display: block; margin-bottom: 12px;
+  font-size: 14px; color: var(--muted);
+}
+input {
+  width: 100%; padding: 11px 14px; margin-top: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-family: inherit; font-size: 14px;
+}
+input:focus { outline: 2px solid var(--taxi); border-color: transparent; }
+
+.btn {
+  width: 100%; padding: 13px;
+  background: var(--taxi); color: #1A1A1A;
+  border: none; border-radius: 10px;
+  font-weight: bold; font-size: 15px;
+  cursor: pointer; font-family: inherit;
+  transition: background .2s;
+}
+.btn:hover { background: var(--taxi-dark); }
+
+/* نقش */
+.role-picker { display: flex; gap: 8px; margin-bottom: 16px; }
+.role-btn {
+  flex: 1; padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text); cursor: pointer;
+  font-family: inherit; font-size: 14px;
+}
+.role-btn.active {
+  background: var(--taxi); color: #1A1A1A;
+  border-color: var(--taxi); font-weight: bold;
+}
+
+/* تب‌ها */
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button {
+  flex: 1; padding: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text); cursor: pointer; font-family: inherit;
+}
+.tabs button.active {
+  background: var(--taxi); color: #1A1A1A;
+  border-color: var(--taxi); font-weight: bold;
+}
+
+/* سفارش‌ها */
+.order {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.order b { display: block; margin-bottom: 4px; }
+.order small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.order.pending  { border-right: 4px solid var(--taxi); }
+.order.accepted { border-right: 4px solid var(--success); }
+.order.done     { opacity: .6; border-right: 4px solid var(--muted); }
+
+.order button {
+  margin-top: 8px; padding: 8px 14px;
+  background: var(--success); color: white;
+  border: none; border-radius: 8px; cursor: pointer;
+  font-family: inherit;
+}
+.order button.finish { background: var(--danger); }
+
+.switch {
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer; font-size: 15px; color: var(--text);
+}
+.switch input { width: auto; margin: 0; }
+
+.error { color: var(--danger); font-size: 13px; margin-top: 8px; min-height: 18px; }
